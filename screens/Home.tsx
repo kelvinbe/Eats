@@ -1,6 +1,6 @@
 import React from 'react'
 import HeaderTabs from '../components/Molecules/HeaderTabs'
-import { View, Text, SafeAreaView, StyleSheet, Platform } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, Platform, ScrollView } from 'react-native'
 import SearchBar from '../components/Molecules/SearchBar';
 import Categories from '../components/Molecules/Categories';
 
@@ -28,7 +28,9 @@ export default function Home() {
       <HeaderTabs />
       <SearchBar />
       </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
       <Categories />
+      </ScrollView>
     </SafeAreaView>
   )
 }
