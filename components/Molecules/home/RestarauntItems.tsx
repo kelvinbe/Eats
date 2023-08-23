@@ -51,22 +51,26 @@ const styles = StyleSheet.create({
   // AIzaSyBRViY_qUrGCeaIitgug7pTe8clfhQIt0Q
 
 
-export default function RestarauntItems(props: IRestaraunts) {
+export default function RestarauntItems({ navigation, ...props }) {
   
   const {restarauntsData} = props
   
-    console.log(restarauntsData)
+      console.log(restarauntsData)
   return (
-    <TouchableOpacity activeOpacity={1}>
-     {
-        restarauntsData?.map((r, index) => {
-    return <View key={index} style={styles.restarauntContainer}>
+    <>
+    {restarauntsData?.map((r, index) => {
+      return  <TouchableOpacity key={index}  activeOpacity={1} onPress={() => navigation.navigate('RestrauntDetails', {
+          image: r?.scrollablePhotos?.[0]?.src,
+          name: r?.name,
+          rating: r?.rating,
+          })}>
+      <View style={styles.restarauntContainer}>
 
-            <RestarauntCard  image={r?.scrollablePhotos?.src} info={r?.name} rating={r.rating} />
-    </View>
-
+          <RestarauntCard  image={r?.scrollablePhotos?.[0]?.src} info={r?.name} rating={r.rating} />
+      </View>
+      </TouchableOpacity>
+    
         })
-     } 
-    </TouchableOpacity>
-  )
+      } 
+  </>)
 }

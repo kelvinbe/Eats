@@ -3,25 +3,28 @@ import React from 'react'
 import RestarauntCard from '../../Atoms/RestarauntCard'
 
 
-// const {categories, priceRange, reviews} = yelpApi
 
-// const Categories = categories.map((cat) => cat.title).join('.')
-
-// const Description = `${Categories} ${priceRange} ${reviews}`
 
 
 const image = 'https://images.pexels.com/photos/3483771/pexels-photo-3483771.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
 const title = 'Farmhouse Kitchen Thai Cuisine'
 const description = 'Thai . Comfort Food . $$ . HH . 4 star (2913+)'
 
-export default function About() {
+export default function About(props) {
+
+
+
+const {name, image, rating} = props.route.params
+
+const Description = `Comfort Food . $$ . HH . ${rating} ${name}`
+
 
 
     return (
     <View>
      <RestaurantImage image={image} />
-      <RestaurantName name={title} />
-      <RestaurantDescription description={description} />
+      <RestaurantName name={name} />
+      <RestaurantDescription description={Description} />
     </View>
     )
 }

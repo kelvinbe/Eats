@@ -8,6 +8,7 @@ import { localRestaurants } from '../components/Molecules/home/RestarauntItems';
 import axios from 'axios'
 import { Divider } from 'react-native-elements/dist/divider/Divider';
 import BottomTabs from '../components/Organisms/BottomTabs';
+import { RAPID_API_KEY } from "@env";
 
 
 const styles = StyleSheet.create({
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
 });
 
 
-export default function Home() {
+export default function Home({navigation}) {
 
   const [restaurantData, setRestaurantsData] = useState(localRestaurants)
   const [city, setCity] = useState('San Francisco')
@@ -41,7 +42,7 @@ export default function Home() {
         page: '1'
       },
       headers: {
-        // 'X-RapidAPI-Key': 'ab9f5e48e7mshbbf7bfd0a50cd4bp143187jsn73e2ed3142b5',
+        'X-RapidAPI-Key': RAPID_API_KEY,
         'X-RapidAPI-Host': 'yelp-business-api.p.rapidapi.com'
       }
     };
@@ -50,7 +51,6 @@ export default function Home() {
       const response = await axios.request(options);
 
       if(activeTab === 'Delivery'){
-
         const filteredData = response.data.SearchResults.filter((data: any) => data.rating  < 4.8 )
         setRestaurantsData(filteredData)
       }else{
@@ -73,7 +73,7 @@ export default function Home() {
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
       <Categories />
-      <RestarauntItems restarauntsData={restaurantData}  />
+      <RestarauntItems restarauntsData={restaurantData} navigation={navigation}  />
       </ScrollView>
       <Divider width={1} />
       <BottomTabs />
