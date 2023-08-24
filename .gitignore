@@ -62,4 +62,9 @@ buck-out/
 # Expo
 .expo/*
 web-build/
+
+
+
+# env files
 .env
+mock/.env
