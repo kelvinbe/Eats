@@ -12,6 +12,10 @@
       "eas": {
         "projectId": "6c6eb364-2237-4214-809e-aee82f74df3d"
       }
+    },
+    "android": {
+      "versionCode": 2,
+      "package": "com.kelvinkb.blank"
     }
   }
 }
