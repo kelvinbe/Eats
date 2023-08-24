@@ -24,11 +24,17 @@ const styles = StyleSheet.create({
     }
   });
 
-export default function SearchBar() {
+export default function SearchBar({setCity}) {
   return (
     <View style={styles.searchContainer}>
       <GooglePlacesAutocomplete
-              placeholder='Search' query={undefined}  
+              placeholder='Search' 
+              query={{key: 'AIzaSyBRViY_qUrGCeaIitgug7pTe8clfhQIt0Q'}} 
+              onPress={(data, details = null) => {
+                console.log(data.description)
+                const city = data.description.split(',')[0]
+                setCity(city)
+              }}
               styles={{
                 textInput: {
                     backgroundColor: '#eee',
