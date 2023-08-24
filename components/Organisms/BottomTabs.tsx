@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 export default function BottomTabs() {
   return (
     <View style={styles.tabsContainer}>
-        <BottomTabsItems icon='home' name='Home' />
+        <BottomTabsItems icon='home' name='Home'  />
         <BottomTabsItems icon='search' name='Browse' />
         <BottomTabsItems icon='shopping-bag' name='Grocery' />
         <BottomTabsItems icon='receipt' name='Orders' />

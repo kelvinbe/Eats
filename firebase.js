@@ -17,7 +17,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-console.log('dbbbbb', db)
 
 // make sure to export everything you'll need in other files
 export { db, collection, addDoc, serverTimestamp, query, orderBy, onSnapshot };

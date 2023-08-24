@@ -13,7 +13,7 @@ interface IHeaderButton {
 const generateStyles = (props: IHeaderButton) => {
   return StyleSheet.create({
     headerButton: {
-      backgroundColor: props.activeTab === props.name ? 'black' : 'white',
+      backgroundColor: props.activeTab === props.name ? '#FE4A3D' : 'white',
       paddingVertical: 6,
       paddingHorizontal: 16,
       borderRadius: 30,

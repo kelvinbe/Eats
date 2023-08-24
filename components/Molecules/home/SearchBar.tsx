@@ -3,6 +3,9 @@ import React from 'react'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import {GOOGLE_PLACES_API} from '@env'
+import SearchableDropdown from 'react-native-searchable-dropdown';
+import RNPickerSelect from 'react-native-picker-select';
 
 
 
@@ -24,44 +27,20 @@ const styles = StyleSheet.create({
     }
   });
 
+  const placeholder = {
+    label: 'Select an item...',
+    value: null,
+    color: '#9EA0A4',
+  };
+  const items = [
+    { label: 'Item 1', value: 'item1' },
+    { label: 'Item 2', value: 'item2' },
+    { label: 'Item 3', value: 'item3' },
+  ];
+
 export default function SearchBar({setCity}) {
   return (
     <View style={styles.searchContainer}>
-      <GooglePlacesAutocomplete
-              placeholder='Search' 
-              query={{key: 'AIzaSyBRViY_qUrGCeaIitgug7pTe8clfhQIt0Q'}} 
-              onPress={(data, details = null) => {
-                console.log(data.description)
-                const city = data.description.split(',')[0]
-                setCity(city)
-              }}
-              styles={{
-                textInput: {
-                    backgroundColor: '#eee',
-                    borderRadius: 20,
-                    fontWeight: '700',
-                    marginTop: 7
-                },
-                textInputContainer: {
-                    backgroundColor: '#eee',
-                    borderRadius: 50,
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    marginRight: 10
-                }
-              }}  
-              
-              renderLeftButton={() => <View style={styles.leftButton}>
-                <Ionicons name='location-sharp' size={24} />
-              </View>}
-              renderRightButton={() => <View style={styles.rightButton}>
-                <AntDesign name='clockcircle' size={11} style={{marginRight: 6}}  />
-                <Text>
-                Search
-              </Text>
-              </View>
-              } 
-              />
     </View>
   )
 }
