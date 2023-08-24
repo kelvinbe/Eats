@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
       fontSize: 20
     },
     checkoutModalContainer: {
-      backgroundColor: 'black',
+      backgroundColor: '#FE4A3D',
       padding: 10,
       borderRadius: 30,
       width: 150,
@@ -99,18 +99,15 @@ export default function ViewCartButton({navigation}) {
   const [modalVisible, setModalVisible] = useState(false)
   const [loading, setLoading] = useState(false)
   const items = useSelector((state) => state?.cartReducer?.selectedItems?.items)
-  console.log('items', items)
   const total = items?.map((item) => Number(item.price)).reduce((prev, curr) => prev + curr, 0)
   const totalUSD = total?.toLocaleString('en', {
     style: 'currency',
     currency: 'USD'
   })
 
-  console.log('db', db)
 
 
   const addOrderToFirebase = async () => {
-    console.log('dbbb', db)
     
     try {
       setLoading(true)
@@ -119,7 +116,6 @@ export default function ViewCartButton({navigation}) {
         restaurantName: 'restaurant',
         createdAt: serverTimestamp(),
       });
-      console.log("Document written with ID: ", docRef.id);
       setTimeout(() => {
         setLoading(false)
         setModalVisible(false)
@@ -131,7 +127,6 @@ export default function ViewCartButton({navigation}) {
   };
 
 
-  console.log('aaaa', totalUSD)
 
   const checkoutModalContent = () => {
     return (
@@ -151,7 +146,7 @@ export default function ViewCartButton({navigation}) {
               <TouchableOpacity
                 style={{
                   marginTop: 20,
-                  backgroundColor: "black",
+                  backgroundColor: "#FE4A3D",
                   alignItems: "center",
                   padding: 13,
                   borderRadius: 30,
@@ -193,7 +188,7 @@ export default function ViewCartButton({navigation}) {
     { total ? (
     <View style={styles.viewCartButtonHolder}>
     <View style={styles.viewCartButtonContainer}>
-        <TouchableOpacity style={styles.viewCartButton}>
+        <TouchableOpacity  style={styles.viewCartButton}>
       <Text style={styles.viewCartButtonText} onPress={() => setModalVisible(true)}>Check Out Cart</Text>
       <Text style={styles.totalUSDText}>{totalUSD}</Text>
       </TouchableOpacity>

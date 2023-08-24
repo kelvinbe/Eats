@@ -27,43 +27,23 @@ const styles = StyleSheet.create({
 export default function Home({navigation}) {
 
   const [restaurantData, setRestaurantsData] = useState(localRestaurants)
-  const [city, setCity] = useState('San Francisco')
+  const [city, setCity] = useState('San Fransisco')
   const [activeTab, setActiveTab] = useState('Delivery')
- 
-  const YELP_API =  'https://travel-advisor.p.rapidapi.com/hotels/list'
+  const [filteredData, setFilteredData] = useState([]);
 
-  const getRestaurantsFromYelp =async () => {
-    const options = {
-      method: 'GET',
-      url: `https://yelp-business-api.p.rapidapi.com/search`,
-      params: {
-        query: 'restaurants',
-        location: `${city}`,
-        page: '1'
-      },
-      headers: {
-        'X-RapidAPI-Key': RAPID_API_KEY,
-        'X-RapidAPI-Host': 'yelp-business-api.p.rapidapi.com'
-      }
-    };
-    
-    try {
-      const response = await axios.request(options);
+  
 
-      if(activeTab === 'Delivery'){
-        const filteredData = response.data.SearchResults.filter((data: any) => data.rating  < 4.8 )
-        setRestaurantsData(filteredData)
-      }else{
-      setRestaurantsData(response.data?.SearchResults)
-      }
-    } catch (error) {
-      console.error(error);
-    }
-    
+
+  // Function to filter restaurants based on activeTab
+  const filterRestaurants = () => {
+    const filtered = restaurantData.filter(restaurant => restaurant.activeTab === activeTab);
+    setFilteredData(filtered);
   };
-  useEffect(() => {
-    getRestaurantsFromYelp()
-  }, [city, activeTab])
+
+  // Call filterRestaurants when activeTab changes
+  React.useEffect(() => {
+    filterRestaurants();
+  }, [activeTab]);
 
   return (
     <SafeAreaView style={styles.homeContainer}>
@@ -73,7 +53,7 @@ export default function Home({navigation}) {
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
       <Categories />
-      <RestarauntItems restarauntsData={restaurantData} navigation={navigation}  />
+      <RestarauntItems restarauntsData={filteredData} navigation={navigation}  />
       </ScrollView>
       <Divider width={1} />
       <BottomTabs />

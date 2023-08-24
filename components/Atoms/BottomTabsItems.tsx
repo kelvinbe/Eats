@@ -25,7 +25,7 @@ export default function BottomTabsItems(props: ITabs) {
   return (
     <TouchableOpacity>
     <View>
-    <FontAwesome5 name={icon} size={25} style={{marginBottom: 3, alignSelf: 'center'}}  />
+    <FontAwesome5 color={'#FE4A3D'} name={icon} size={25} style={{marginBottom: 3, alignSelf: 'center'}}  />
       <Text>{name}</Text>
     </View>
     </TouchableOpacity>
