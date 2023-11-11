@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet, Modal, TouchableOpacity} from 'react-native'
-import React, {useState} from 'react'
+import React, {useMemo, useState} from 'react'
 import { useSelector } from 'react-redux';
 import OrderItem from '../Molecules/restrauntDetails/OrderItems';
-import {db, collection, addDoc, serverTimestamp} from '../../firebase.js';
+import {db, collection, addDoc, serverTimestamp, functions, httpsCallable} from '../../firebase.js';
 import LottieView from "lottie-react-native";
 
 
@@ -110,17 +110,13 @@ export default function ViewCartButton({navigation}) {
   const addOrderToFirebase = async () => {
     
     try {
-      setLoading(true)
-      const docRef = await addDoc(collection(db, "orders"), {
-        items: items,
-        restaurantName: 'restaurant',
-        createdAt: serverTimestamp(),
-      });
-      setTimeout(() => {
-        setLoading(false)
-        setModalVisible(false)
+        setLoading(true)
+        setTimeout(() => {
         navigation.navigate("OrderCompleted");
-      }, 2500);
+        setLoading(false)
+          
+        }, 5000)
+        setModalVisible(false)
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -128,7 +124,7 @@ export default function ViewCartButton({navigation}) {
 
 
 
-  const checkoutModalContent = () => {
+  const checkoutModalContent = useMemo(() => {
     return (
       <>
             <View style={styles.modalContainer}>
@@ -175,7 +171,7 @@ export default function ViewCartButton({navigation}) {
         </View>
       </>
     );
-  };
+  }, [items, totalUSD]);
 
 
   return (
@@ -183,13 +179,13 @@ export default function ViewCartButton({navigation}) {
     <Modal animationType='slide' visible={modalVisible} transparent={true} onRequestClose={() => setModalVisible(false)}>
 
 
-      {checkoutModalContent()}
+      {checkoutModalContent}
     </Modal>
     { total ? (
     <View style={styles.viewCartButtonHolder}>
     <View style={styles.viewCartButtonContainer}>
-        <TouchableOpacity  style={styles.viewCartButton}>
-      <Text style={styles.viewCartButtonText} onPress={() => setModalVisible(true)}>Check Out Cart</Text>
+      <TouchableOpacity  style={styles.viewCartButton} onPress={() => setModalVisible(true)}>
+      <Text style={styles.viewCartButtonText} >Check Out Cart</Text>
       <Text style={styles.totalUSDText}>{totalUSD}</Text>
       </TouchableOpacity>
     </View>

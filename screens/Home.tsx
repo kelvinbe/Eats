@@ -32,9 +32,6 @@ export default function Home({navigation}) {
   const [filteredData, setFilteredData] = useState([]);
 
   
-
-
-  // Function to filter restaurants based on activeTab
   const filterRestaurants = () => {
     const filtered = restaurantData.filter(restaurant => restaurant.activeTab === activeTab);
     setFilteredData(filtered);
@@ -56,7 +53,7 @@ export default function Home({navigation}) {
       <RestarauntItems restarauntsData={filteredData} navigation={navigation}  />
       </ScrollView>
       <Divider width={1} />
-      <BottomTabs />
+      <BottomTabs navigation={navigation} />
     </SafeAreaView>
   )
 }

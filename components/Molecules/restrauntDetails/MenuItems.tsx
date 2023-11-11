@@ -3,6 +3,7 @@ import React from "react";
 import { Divider } from "react-native-elements";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { useDispatch, useSelector } from "react-redux";
+import { Dimensions } from 'react-native';
 
 
 const styles = StyleSheet.create({
@@ -20,6 +21,10 @@ const styles = StyleSheet.create({
 
 
 export default function MenuItems({restaurantName, foods, hideCheckbox, marginLeft}) {
+
+
+
+
 
   const dispatch = useDispatch()
   const selectItem = (item, checkboxValue) => dispatch({
@@ -57,15 +62,27 @@ const FoodInfo = (props) => (
   </View>
 );
 
-const FoodImage = ({marginLeft, ...props}) => (
-  <View>
-    <Image
-      source={{ uri: props.food.image }}
-      style={{
-        width: 100,
-        height: 100,
-        borderRadius: 8,
-      }}
-    />
-  </View>
-);
+const FoodImage = ({marginLeft, ...props}) => {
+  
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
+
+ return  <View>
+  <Image
+    source={{ uri: props.food.image }}
+    style={{
+      width: windowWidth > 360 ? 100 : 50,
+      height: windowHeight > 712 ? 100 : 60,
+      borderRadius: 8,
+      marginRight: 10
+    }}
+  />
+</View>
+
+
+
+}
+
+

@@ -16,14 +16,14 @@ const styles = StyleSheet.create({
   });
   
 
-export default function BottomTabs() {
+export default function BottomTabs({navigation}) {
   return (
     <View style={styles.tabsContainer}>
-        <BottomTabsItems icon='home' name='Home'  />
-        <BottomTabsItems icon='search' name='Browse' />
-        <BottomTabsItems icon='shopping-bag' name='Grocery' />
-        <BottomTabsItems icon='receipt' name='Orders' />
-        <BottomTabsItems icon='user' name='Account' />
+        <BottomTabsItems navigation={navigation} icon='home' name='Home'  />
+        <BottomTabsItems navigation={navigation} icon='search' name='Browse' />
+        <BottomTabsItems navigation={navigation} icon='shopping-bag' name='Grocery' />
+        <BottomTabsItems navigation={navigation} icon='receipt' name='Orders' />
+        <BottomTabsItems navigation={navigation} icon='user' name='Account' />
     </View>
   )
 }

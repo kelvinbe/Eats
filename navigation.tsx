@@ -7,7 +7,7 @@ import RestrauntDetails from './screens/RestrauntDetails';
 import { Provider as ReduxProvider } from 'react-redux'
 import configureStore from './redux/store';
 import OrderCompleted from './screens/OrderCompleted';
-
+import Browse from './screens/Browse';
 
 
 
@@ -29,6 +29,7 @@ export default function RootNavigation() {
             <Stack.Screen name='Home' component={Home} />
             <Stack.Screen name='RestrauntDetails' component={RestrauntDetails} />
             <Stack.Screen name='OrderCompleted' component={OrderCompleted} />
+            <Stack.Screen name='Browse' component={Browse} />
         </Stack.Navigator>
 
     </NavigationContainer>

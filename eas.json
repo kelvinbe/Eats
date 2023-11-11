@@ -17,5 +17,14 @@
       "developmentClient": true
     },
     "production": {}
+    
+  },
+  "submit": {
+    "production": {
+      "android": {
+        "serviceAccountKeyPath": "../path/to/api-xxx-yyy-zzz.json",
+        "track": "internal"
+      }
+    }
   }
 } 

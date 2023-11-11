@@ -6,7 +6,9 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 interface ITabs {
     icon: string,
-    name: string
+    name: string,
+    onPress?: () => void,
+    
 }
 
 const styles = StyleSheet.create({
@@ -17,13 +19,14 @@ const styles = StyleSheet.create({
 
     }
   });
+
+  
   
 
-export default function BottomTabsItems(props: ITabs) {
+export default function BottomTabsItems({icon, name, navigation}) {
 
-        const {icon, name} = props
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.navigate(name)}>
     <View>
     <FontAwesome5 color={'#FE4A3D'} name={icon} size={25} style={{marginBottom: 3, alignSelf: 'center'}}  />
       <Text>{name}</Text>

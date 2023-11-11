@@ -54,7 +54,7 @@ export default function RestarauntCard(props: IRestarauntCard) {
 
     return (
     <View style={styles.mainContainer}>
-    <Image source={{uri: image}} style={styles.imageContainer} />
+    <Image source={{uri: image}} alt='Restaurant image loading' style={styles.imageContainer} />
     <TouchableOpacity style={styles.heartIcon}>
         <MaterialCommunityIcons name='heart-outline' size={25} color='#fff' />
     </TouchableOpacity>

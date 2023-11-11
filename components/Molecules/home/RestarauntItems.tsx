@@ -1,6 +1,8 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import RestarauntCard from '../../Atoms/RestarauntCard'
+
+
 
 export const localRestaurants = [
     {
@@ -208,12 +210,6 @@ export const localRestaurants = [
   ];
   
   // console.log(localRestaurants);
-  
-  
-  
-
-
-
 
   interface IRestaraunts {
     restarauntsData: {category: string, scrollablePhotos: string[] , foodId: string, image: string}[],
@@ -234,8 +230,13 @@ const styles = StyleSheet.create({
 
 
 export default function RestarauntItems({ navigation, ...props }) {
+
+  const [arrayOfObjectsWithImages, setArrayOfObjectsWithImages] = useState([]);
+
   
   const {restarauntsData} = props
+
+
   
   return (
     <>

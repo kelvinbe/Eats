@@ -10,44 +10,44 @@ import ViewCartButton from '../components/Atoms/ViewCartButton'
 const products = [
   {
     title: "Lasagna",
-    description: "This is the description for Product 1.",
+    description: "Sweet tasting beef lasagna",
     price: 29.99,
     image: "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     title: "Rice Chicken",
-    description: "This is the description for Product 2.",
+    description: "Good Rice Chicken for you to enjoy",
     price: 49.99,
     image: "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     title: "Noodles",
-    description: "This is the description for Product 3.",
+    description: "Indomie Noodles With Spicy Stew",
     price: 19.99,
     image: "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=600",
   }, 
   {
       title: "Fried Pork",
-      description: "This is the description for Product 3.",
+      description: "Juicy ribs for pork munchers",
       price: 29.99,
       image: "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=600",
     }, 
     
   {
       title: "Mutton",
-      description: "This is the description for Product 3.",
+      description: "Tender Mutton for your pallet today",
       price: 39.99,
       image: "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=600",
     }, 
   {
       title: "Goat Meat",
-      description: "This is the description for Product 3.",
+      description: "This is the rosated Goat meat for you",
       price: 49.99,
       image: "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=600",
     }, 
   {
       title: "Vanilla Cake",
-      description: "This is the description for Product 3.",
+      description: "Nice Vanilla for your sweet tooth",
       price: 19.99,
       image: "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
@@ -60,7 +60,7 @@ export default function RestrauntDetails({route, navigation}) {
     <View style={{flex: 1}}>
       <About route={route} />
       <Divider width={1.8} style={{marginVertical: 20}} />
-      <MenuItems restaurantName={route.params.name} foods={products} />
+      <MenuItems marginLeft={20} restaurantName={route.params.name} foods={products} />
       <ViewCartButton navigation={navigation} restaurantName={route.params.name} />
     </View>
 )
