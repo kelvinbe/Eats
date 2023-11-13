@@ -10,16 +10,17 @@ interface IProps {
     category: string;
     image: string;
     nutrients: {ENERC_KCAL: number, PROCNT: number,FAT: number,CHOCDF: number, FIBTG: number}
+    onPress: () => void;
 
 }
 
 export default function BrowseCard(props: IProps) {
 
-    const {category, image, nutrients} = props
+    const {category, image, nutrients, onPress} = props
 
 
 return (
-    <TouchableScale activeScale={0.7}>
+    <TouchableScale onPress={onPress} activeScale={0.7}>
     <View style={styles.container}>
         <Card containerStyle={styles.card}>
             <View style={styles.user}>
