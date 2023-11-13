@@ -50,8 +50,6 @@ export default function Browse({ navigation }) {
 
   const handleOnPress = (nutrients: {ENERC_KCAL: number, PROCNT: number,FAT: number,CHOCDF: number, FIBTG: number}) => {
       setModalVisible(true)
-
-      console.log('nutrients', nutrients)
       setNutrients(nutrients)
 
   }
